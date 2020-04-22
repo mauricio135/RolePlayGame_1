@@ -12,8 +12,11 @@ namespace RolePlayGame_1
         {
             PopulateElementos();
             foreach (Enano enano  in Enanos)
-            Console.WriteLine(enano.Nombre);
+            {
+                
+            PrintEnano.ImprimeEnano(enano);
 
+            }
 
 
 

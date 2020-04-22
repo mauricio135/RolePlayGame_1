@@ -18,12 +18,11 @@ namespace Library.Test
             
         }
          [Test]
-        public void Test2()
+        public void ImprimeDatosDeEnanoCorrectamente()
         {    
             Enano pequeño = new Enano("Enano1",2000);
+
             Assert.AreEqual(100,pequeño.Vida);
-
-
             
         }
     }
