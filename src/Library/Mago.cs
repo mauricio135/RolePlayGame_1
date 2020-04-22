@@ -73,7 +73,7 @@ namespace RolePlayGame_1.Library
             int total = 0;
             foreach (Defensa defensa in defensas)
             {
-                total += defensa.Proteccion;
+                total += defensa.getProteccion();
             } 
             return total;
         }
