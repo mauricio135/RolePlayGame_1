@@ -51,4 +51,44 @@ namespace Program
                 return this.vida > 0;
             }
 
+          public int CalcularAtaqueTotal ()
+        {
+            int total = 0;
+            foreach (Elemento elemento in elementos)
+            {
+                total += elemento.Ataque;
+            } 
+            return total;
+        }
+
+        public int CalcularDefensaTotal ()
+        {
+            int total = 0;
+            foreach (Elemento elemento in elementos)
+            {
+                total += elemento.Defensa;
+            } 
+            return total;
+        }
+
+
+        public void CurarDementor()
+        {
+            this.vida = 100;
+        }
+
+        public string GetTextToPrint()
+        {
+            string todosloselementos = "";
+            foreach (Elemento item in this.elementos)
+            {
+                todosloselementos += item.GetTextToPrint();
+            }
+
+            return ($"El Dementor {this.nombre} tiene {this.vida} de vida y los siguientes elementos: {todosloselementos} ");
+
+        }
+        
+
     }
+}
