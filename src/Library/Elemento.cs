@@ -31,6 +31,13 @@ namespace RolePlayGame_1.Library
             this.Ataque = ataque;
             this.Defensa = defensa;
         }
+        
+         public string GetTextToPrint()
+        {
+
+            return $" '{this._nombre}' ";   
+
+        }
 
 
     }

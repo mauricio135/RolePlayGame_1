@@ -52,15 +52,34 @@ namespace RolePlayGame_1.Library
         {
             return this.vida > 0;
         }
+        public int CalcularAtaqueTotal()
+        {
+            int total = 0;
+            foreach (Elemento elemento in elementos)
+            {
+                total += elemento.Ataque;
+            }
+            return total;
+        }
+
+        public int CalcularDefensaTotal()
+        {
+            int total = 0;
+            foreach (Elemento elemento in elementos)
+            {
+                total += elemento.Defensa;
+            }
+            return total;
+        }
         public string GetTextToPrint()
         {
-            string todoslosataques = "";
-            foreach (Ataque item in this.ataques)
+            string todosloselemntos = "";
+            foreach (Elemento item in this.elementos)
             {
-                todoslosataques = ataques + item.Nombre;
+                todosloselemntos += item.GetTextToPrint();
             }
 
-            return ($"El Enano {this.Nombre} tiene {this.Vida} puntos de Vida y ");
+            return ($"El Enano {this.Nombre} tiene {this.Vida} puntos de Vida y {todosloselemntos} elementos ");
 
         }
 

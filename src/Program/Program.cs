@@ -6,15 +6,19 @@ namespace RolePlayGame_1
 {
     public class Program
     {
-        private static ArrayList Elementos = new ArrayList();        
+        private static ArrayList Elementos = new ArrayList();
         private static ArrayList Enanos = new ArrayList();
         static void Main(string[] args)
         {
             PopulateElementos();
-            foreach (Enano enano  in Enanos)
+            foreach (Enano enano in Enanos)
             {
-                
-            PrintEnano.ImprimeEnano(enano);
+                Elemento prueba = new Elemento("Prueba de Elemento", 100, 200);
+                enano.AgregarElemento(prueba);
+                Elemento prueba2 = new Elemento("Prueba de Elemento2", 100, 300);
+                enano.AgregarElemento(prueba2);
+
+                PrintEnano.ImprimeEnano(enano);
 
             }
 
@@ -25,8 +29,10 @@ namespace RolePlayGame_1
                 AddElementos("Hacha", 100, 0);
                 AddElementos("Martillo", 200, 0);
                 AddElementos("Escudo", 0, 400);
-                AddEnanos("Enano1",300,89);                
-                AddEnanos("Enano2",300,89);
+                AddEnanos("Enano1", 300, 89);
+                AddEnanos("Enano2", 300, 89);
+
+
             }
 
 
@@ -39,7 +45,7 @@ namespace RolePlayGame_1
             {
                 Elementos.Add(new Elemento(nombre, ataque, defensa));
             }
-         
+
 
 
         }
