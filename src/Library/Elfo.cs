@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using RolePlayGame_1;
 namespace RolePlayGame_1.Library
 {
     public class Elfo
@@ -24,9 +25,9 @@ namespace RolePlayGame_1.Library
             get {return _vidaInicial;}
             set {_vidaInicial = value;}
         }
-      private ArrayList Ataques=new ArrayList();
-      private ArrayList Defensas=new ArrayList();
-      private ArrayList Elementos=new ArrayList(); 
+      private ArrayList Ataques = new ArrayList();
+      private ArrayList Defensas = new ArrayList();
+      private ArrayList Elementos = new ArrayList(); 
 
        
        // public void AgregarAtaque(Ataque ataque)
@@ -82,6 +83,21 @@ namespace RolePlayGame_1.Library
                 total += elemento.Defensa;
             } 
             return total;
+        }
+        public void CurarElfo()
+        {
+            this.Vida = 100;
+        }
+
+        public string GetTextToPrint()
+        {
+            string todosloselementos = "";
+            foreach (Elemento item in this.Elementos)
+            {
+                todosloselementos += item.Nombre;
+            }
+
+            return ($"El Elfo {this.Nombre} tiene {this.Vida} de vida y los siguientes elementos: {todosloselementos} ");
         }
 
     }
