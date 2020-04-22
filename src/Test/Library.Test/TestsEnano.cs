@@ -30,6 +30,13 @@ namespace Library.Test
             string resulado = pequeño.GetTextToPrint();
             Assert.AreEqual(esperado,resulado);
             
+        } 
+         [Test]
+        public void ValidoQueElQuitarVidaResteCorretamente()
+        {
+            Enano pequeño = new Enano("Enano1",100);
+            //pequeñ
+
         }
     }
 }

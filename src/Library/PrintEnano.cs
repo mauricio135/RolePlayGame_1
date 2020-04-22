@@ -4,7 +4,7 @@ namespace RolePlayGame_1.Library
 {
 public class PrintEnano
 {
- public static void ImprimeEnano(Enano enano)
+ public static void ConsolePrintEnano(Enano enano)
  {
  Console.WriteLine(enano.GetTextToPrint());
  }
