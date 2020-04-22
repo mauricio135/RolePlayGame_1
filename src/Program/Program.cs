@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using RolePlayGame_1.library;
 using RolePlayGame_1.Library;
 
 namespace RolePlayGame_1
@@ -61,7 +62,43 @@ namespace RolePlayGame_1
            //Belatrix ataca a dobby
            Dooby.Vida=Dooby.Vida-Belatrix.CalcularAtaqueTotal();
            Console.WriteLine(Dooby.Nombre+  "\t" + "Vivo:  "+ Dooby.TieneVida());
-        
+
+
+           //Creo Dementores
+            Dementor dementor1 = new Dementor("SeñorOscuro", 100);
+
+            Elemento elementoDementor1 = new Elemento("Bostezo Fatal", 10, 50);
+            Elementos.Add(elementoDementor1);
+            dementor1.AgregarElemento(elementoDementor1);
+            Elemento elementoDementor2 = new Elemento("Alas de murcielago", 2, 4);
+            dementor1.AgregarElemento(elementoDementor2);
+
+            Dementor dementor2 = new Dementor("Ron", 100);
+
+            Elemento elementoDementor3 = new Elemento("Traje invisible", 1, 1);
+            dementor2.AgregarElemento(elementoDementor3);
+            Elemento elementoDementor4 = new Elemento("Gorro Asesino", 5, 6);
+            dementor2.AgregarElemento(elementoDementor4);
+            
+            //Agrego Ataques a los Dementores
+            Ataque ataqueDementor1= new Ataque("Absorve energia",2);
+            Ataque ataqueDementor2= new Ataque("Bostezo venenoso",4);
+
+            dementor1.AgregarAtaque(ataqueDementor1);
+            dementor2.AgregarAtaque(ataqueDementor2);
+
+
+
+            //Ataque entre Dementores                            
+            dementor1.vida = dementor1.vida - dementor2.CalcularAtaqueTotal() - dementor1.CalcularDefensaTotal();
+            PrintDementor.ConsolePrintDementor(dementor1);
+
+            
+            //Curo Dementor
+            dementor1.CurarDementor();
+            PrintDementor.ConsolePrintDementor(dementor1);     
+
+
         }
     }
 }   
