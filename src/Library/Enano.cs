@@ -71,6 +71,10 @@ namespace RolePlayGame_1.Library
             }
             return total;
         }
+        public void CurarEnano()
+        {
+            this.Vida = 100;
+        }
 
         public string GetTextToPrint()
         {
