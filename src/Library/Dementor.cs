@@ -1,9 +1,12 @@
 using System;
 using System.Collections;
+using RolePlayGame_1;
+using RolePlayGame_1.Library;
 
-namespace Program
+
+namespace RolePlayGame_1
 {
-    class Dementor
+    public class Dementor
     {
 
         private string nombre {get;set;}
