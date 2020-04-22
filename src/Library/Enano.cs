@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace RolePlayGame_1.Library
 {
-    class Enano
+   public class Enano
     {
 
         private string nombre {get;set;}
@@ -17,7 +17,7 @@ namespace RolePlayGame_1.Library
         public Enano (string nombre, int vida)
             {
                 this.Nombre = nombre;
-                this.Vida = vidainicial;
+                this.Vida = Enano.vidainicial;
                 
             }
         public string Nombre { get; set; }
