@@ -3,16 +3,15 @@ using System.Collections;
 
 namespace RolePlayGame_1.Library
 {
-    public class Hechizo
+    public class Defensa
     {
         private string Nombre { get; set; }
-        private int Danio { get; set; }
+        private int Proteccion { get; set; }
 
-        public Hechizo (string nombre, int danio)
+        public Defensa (string nombre, int proteccion)
         {
             this.Nombre = nombre;
-            this.Danio = danio;
+            this.Proteccion = proteccion;
         }
     }
-    
 }

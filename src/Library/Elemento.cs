@@ -1,6 +1,7 @@
 using System;
+using System.Collections;
 
-namespace RolePlayGame_1
+namespace RolePlayGame_1.Library
 {
     public class Elemento
     {
