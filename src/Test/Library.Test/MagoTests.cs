@@ -3,7 +3,7 @@ using RolePlayGame_1.Library;
 
 namespace Library.Test
 {
-    public class Tests
+    public class MagoTests
     {
         [Test]
         public void DescuentaVidaCorrectamente()

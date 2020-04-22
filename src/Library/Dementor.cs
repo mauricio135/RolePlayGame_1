@@ -1,41 +1,29 @@
 using System;
 using System.Collections;
+using RolePlayGame_1;
+using RolePlayGame_1.Library;
 
-namespace RolePlayGame_1.Library
+
+namespace RolePlayGame_1
 {
-    public class Mago
+    public class Dementor
     {
-        private static int _vidaInicial = 100;
-        public static int VidaInicial
-        {
-            get { return _vidaInicial; }
-            set { _vidaInicial = value; }
-        }
-        private string _nombre;
-        public string Nombre
-        {
-            get { return _nombre; }
-            set { _nombre = value;}
-        }
-        private int _vida;
-        public int Vida
-        {
-            get { return _vida; }
-            set { _vida = value; }
-        }
 
-        private ArrayList Ataques = new ArrayList();
+        private string nombre {get;set;}
+        private int vida {get;set;}
+        private static int VidaInicial { get; set; } = 100;
+        private ArrayList ataques = new ArrayList();
         private ArrayList defensas = new ArrayList();
         private ArrayList elementos = new ArrayList();
         private ArrayList LibroDeHechizos = new ArrayList();
 
         public void AgregarAtaque (Ataque ataque)
         {
-            this.Ataques.Add(ataque);
+            this.ataques.Add(ataque);
         }
         public void QuitarAtaque (Ataque ataque)
         {
-            this.Ataques.Remove(ataque);
+            this.ataques.Remove(ataque);
         }
         public void AgregarDefensa (Defensa defensa)
         {
@@ -54,27 +42,19 @@ namespace RolePlayGame_1.Library
             this.elementos.Remove(elemento);
         }
 
-        public void AgregarHechizo (Hechizo hechizo)
-        {
-            this.LibroDeHechizos.Add(hechizo);
-        }
-        public void QuitarHechizo (Hechizo hechizo)
-        {
-            this.LibroDeHechizos.Remove(hechizo);
-        }
-        public bool Tienevida()
-        {
-            return this.Vida > 0;
-        }
+        public Dementor (string Nombre, int Vida)
+            {
+                this.nombre = Nombre;
+                this.vida = Dementor.VidaInicial;
+                
+            }
 
+        public bool Tienevida ()
+            {
+                return this.vida > 0;
+            }
 
-        public Mago (string name)
-        {
-            this.Nombre = name;
-            this.Vida = Mago.VidaInicial;
-        }
-
-        public int CalcularAtaqueTotal ()
+          public int CalcularAtaqueTotal ()
         {
             int total = 0;
             foreach (Elemento elemento in elementos)
@@ -94,17 +74,25 @@ namespace RolePlayGame_1.Library
             return total;
         }
 
+
+        public void CurarDementor()
+        {
+            this.vida = 100;
+        }
+
+//Aplicamos SRP, el dementor tiene la responsabilidad de conocer su información, pero no de imprimirla.
         public string GetTextToPrint()
         {
             string todosloselementos = "";
             foreach (Elemento item in this.elementos)
             {
-                todosloselementos += item.GetTextToPrint(); 
+                todosloselementos += item.GetTextToPrint();
             }
 
-            return ($"El Mago {this.Nombre} tiene {this.Vida} de vida y los siguientes elementos: {todosloselementos} ");
+            return ($"El Dementor {this.nombre} tiene {this.vida} de vida y los siguientes elementos: {todosloselementos} ");
 
         }
+        
 
     }
 }
