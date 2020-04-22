@@ -73,7 +73,7 @@ namespace RolePlayGame_1.Library
         }
         public void CurarEnano()
         {
-            this.Vida = 100;
+            this.Vida = Enano.vidainicial;
         }
 
         public string GetTextToPrint()
