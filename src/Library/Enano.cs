@@ -79,7 +79,7 @@ namespace RolePlayGame_1.Library
                 todosloselemntos += item.GetTextToPrint();
             }
 
-            return ($"El Enano {this.Nombre} tiene {this.Vida} puntos de Vida y {todosloselemntos} elementos ");
+            return ($"El Enano {this.Nombre} tiene {this.Vida} puntos de Vida y los siguientes elementos: {todosloselemntos} ");
 
         }
 
