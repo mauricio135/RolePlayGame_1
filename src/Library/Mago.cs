@@ -94,5 +94,17 @@ namespace RolePlayGame_1.Library
             return total;
         }
 
+        public string GetTextToPrint()
+        {
+            string todosloselementos = "";
+            foreach (Elemento item in this.elementos)
+            {
+                todosloselementos += item.GetTextToPrint();
+            }
+
+            return ($"El Dementor {this.Nombre} tiene {this.Vida} de vida y los siguientes elementos: {todosloselementos} ");
+
+        }
+
     }
 }
