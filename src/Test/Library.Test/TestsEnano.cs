@@ -21,13 +21,13 @@ namespace Library.Test
         [Test]
         public void ImprimeDatosDeEnanoCorrectamente()
         {
-            Enano pequeño = new Enano("Enano1", 100);
+            Enano pequeño = new Enano("Lucas", 100);
             Elemento item1 = new Elemento("Capa", 200, 400);
             Elemento item2 = new Elemento("Espada", 200, 400);
             pequeño.AgregarElemento(item1);
             pequeño.AgregarElemento(item2);
 
-            string esperado = "El Enano Enano1 tiene 100 puntos de Vida y los siguientes elementos:  'Capa'  'Espada'  ";
+            string esperado = "El Enano Lucas tiene 100 puntos de Vida y los siguientes elementos:  'Capa'  'Espada'  y los siguientes Ataques = ";
             string resulado = pequeño.GetTextToPrint();
             Assert.AreEqual(esperado, resulado);
 

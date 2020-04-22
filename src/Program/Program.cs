@@ -16,17 +16,23 @@ namespace RolePlayGame_1
             Elementos.Add(elemento1);
             enano1.AgregarElemento(elemento1);
             Elemento elemento2 = new Elemento("Espada", 2, 4);
-            Elementos.Add(elemento2);
             enano1.AgregarElemento(elemento2);
 
             Enano enano2 = new Enano("Lucas", 100);
 
             Elemento elemento3 = new Elemento("Armadura", 1, 1);
-            Elementos.Add(elemento3);
             enano2.AgregarElemento(elemento3);
             Elemento elemento4 = new Elemento("Posion Magica", 5, 6);
-            Elementos.Add(elemento4);
             enano2.AgregarElemento(elemento4);
+            
+            //Agrego Ataques a los Enanos
+            Ataque ataque1= new Ataque("Patada Voladora",2);
+            Ataque ataque2= new Ataque("Salto Violento",4);
+
+            enano1.AgregarAtaque(ataque1);
+            enano2.AgregarAtaque(ataque2);
+
+
 
             //Ataque entre Enanos Tommy Ataca a Lucas                            
             enano1.Vida = enano1.Vida - enano2.CalcularAtaqueTotal() - enano1.CalcularDefensaTotal();

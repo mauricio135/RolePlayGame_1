@@ -79,12 +79,16 @@ namespace RolePlayGame_1.Library
         public string GetTextToPrint()
         {
             string todosloselementos = "";
+            string todoslosataques = "";
             foreach (Elemento item in this.elementos)
             {
-                todosloselementos += item.GetTextToPrint();
+                todosloselementos += item.GetTextToPrint();               
             }
+             foreach (Ataque ataque in this.ataques)
+            
+             todoslosataques += ataque.Nombre;
 
-            return ($"El Enano {this.Nombre} tiene {this.Vida} puntos de Vida y los siguientes elementos: {todosloselementos} ");
+            return ($"El Enano {this.Nombre} tiene {this.Vida} puntos de Vida y los siguientes elementos: {todosloselementos} y los siguientes Ataques = {todoslosataques}");
 
         }
 
