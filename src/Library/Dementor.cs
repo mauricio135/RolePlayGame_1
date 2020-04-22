@@ -80,6 +80,7 @@ namespace RolePlayGame_1
             this.vida = 100;
         }
 
+//Aplicamos SRP, el dementor tiene la responsabilidad de conocer su información, pero no de imprimirla.
         public string GetTextToPrint()
         {
             string todosloselementos = "";
