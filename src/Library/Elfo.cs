@@ -94,7 +94,7 @@ namespace RolePlayGame_1.Library
             string todosloselementos = "";
             foreach (Elemento item in this.Elementos)
             {
-                todosloselementos += item.Nombre;
+                todosloselementos += item.GetTextToPrint(); 
             }
 
             return ($"El Elfo {this.Nombre} tiene {this.Vida} de vida y los siguientes elementos: {todosloselementos} ");

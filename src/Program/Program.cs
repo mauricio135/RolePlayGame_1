@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections;
+using RolePlayGame_1.Library;
 
-
-namespace RolePlayGame_1.Library
+namespace RolePlayGame_1
 {
     class Program
     {
