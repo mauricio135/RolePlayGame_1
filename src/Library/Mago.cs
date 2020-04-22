@@ -5,22 +5,38 @@ namespace RolePlayGame_1.Library
 {
     public class Mago
     {
-        private static int VidaInicial { get; set; } = 100;
-        private string nombre { get; set; }
-        private int vida { get; set; }
-        private ArrayList ataques = new ArrayList();
+        private static int _vidaInicial = 100;
+        public static int VidaInicial
+        {
+            get { return _vidaInicial; }
+            set { _vidaInicial = value; }
+        }
+        private string _nombre;
+        public string Nombre
+        {
+            get { return _nombre; }
+            set { _nombre = value;}
+        }
+        private int _vida;
+        public int Vida
+        {
+            get { return _vida; }
+            set { _vida = value; }
+        }
+
+        private ArrayList Ataques = new ArrayList();
         private ArrayList defensas = new ArrayList();
         private ArrayList elementos = new ArrayList();
         private ArrayList LibroDeHechizos = new ArrayList();
 
-        public void AgregarAtaque (Ataque ataque)
-        {
-            this.ataques.Add(ataque);
-        }
-        public void QuitarAtaque (Ataque ataque)
-        {
-            this.ataques.Remove(ataque);
-        }
+        //public void AgregarAtaque (Ataque ataque)
+        //{
+        //    this.ataques.Add(ataque);
+        //}
+        //public void QuitarAtaque (Ataque ataque)
+        //{
+        //    this.ataques.Remove(ataque);
+        //}
         public void AgregarDefensa (Defensa defensa)
         {
             this.defensas.Add(defensa);
@@ -48,22 +64,22 @@ namespace RolePlayGame_1.Library
         }
         public bool Tienevida()
         {
-            return this.vida > 0;
+            return this.Vida > 0;
         }
 
 
         public Mago (string name)
         {
-            this.nombre = name;
-            this.vida = Mago.VidaInicial;
+            this.Nombre = name;
+            this.Vida = Mago.VidaInicial;
         }
 
         public int CalcularAtaqueTotal ()
         {
             int total = 0;
-            foreach (Ataque ataque in ataques)
+            foreach (Elemento elemento in elementos)
             {
-                total += ataque.Danio;
+                total += elemento.Ataque;
             } 
             return total;
         }
@@ -71,9 +87,9 @@ namespace RolePlayGame_1.Library
         public int CalcularDefensaTotal ()
         {
             int total = 0;
-            foreach (Defensa defensa in defensas)
+            foreach (Elemento elemento in elementos)
             {
-                total += defensa.getProteccion();
+                total += elemento.Defensa;
             } 
             return total;
         }

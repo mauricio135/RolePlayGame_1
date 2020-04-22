@@ -1,6 +1,7 @@
 ﻿using System;
+using RolePlayGame_1.Library;
 
-namespace Program
+namespace RolePlayGame_1
 {
     class Program
     {
