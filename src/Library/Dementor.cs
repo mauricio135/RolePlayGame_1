@@ -10,7 +10,7 @@ namespace RolePlayGame_1
     {
 
         private string nombre {get;set;}
-        private int vida {get;set;}
+        public int vida {get;set;}
         private static int VidaInicial { get; set; } = 100;
         private ArrayList ataques = new ArrayList();
         private ArrayList defensas = new ArrayList();
