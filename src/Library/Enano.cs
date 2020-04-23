@@ -48,10 +48,13 @@ namespace RolePlayGame_1.Library
             this.elementos.Remove(elemento);
         }
 
+         //Este Metodo simplemente indica si el Enano esta vivo o no.
         public bool TieneVida()
         {
             return this.vida > 0;
         }
+        
+         //Este Metodo Calcula el valor total de Ataque en base a los valores de sus Elementos.
         public int CalcularAtaqueTotal()
         {
             int total = 0;
@@ -61,7 +64,7 @@ namespace RolePlayGame_1.Library
             }
             return total;
         }
-
+         //Este Metodo Calcula el valor total de Defensa  en base a los valores de sus Elementos.
         public int CalcularDefensaTotal()
         {
             int total = 0;
@@ -71,11 +74,12 @@ namespace RolePlayGame_1.Library
             }
             return total;
         }
+        //Este Metodo hace que este personaje vuelva a tener el valor inicial de Vida
         public void CurarEnano()
         {
             this.Vida = Enano.vidainicial;
         }
-
+        //Metodo para extraer los valores del Objeto que deseo Imprimir con PrintEnano.cs
         public string GetTextToPrint()
         {
             string todosloselementos = "";
