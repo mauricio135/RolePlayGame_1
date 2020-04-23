@@ -16,6 +16,8 @@ namespace Library.Test
         }
 
         [Test]
+        //Prueba de método calcula ataque correcto, para verificar el acceso correcto
+        //a los valores necesarios
         public void AtaqueTotalCorrecto()
         {
             Mago merlin = new Mago ("Merlin");
