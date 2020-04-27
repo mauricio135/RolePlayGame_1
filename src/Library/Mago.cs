@@ -1,57 +1,28 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace RolePlayGame_1.Library
 {
-    public class Mago
+    public class Mago: IPersonaje
     {
-        private static int _vidaInicial = 100;
-        public static int VidaInicial
-        {
-            get { return _vidaInicial; }
-            set { _vidaInicial = value; }
-        }
-        private string _nombre;
-        public string Nombre
-        {
-            get { return _nombre; }
-            set { _nombre = value;}
-        }
-        private int _vida;
-        public int Vida
-        {
-            get { return _vida; }
-            set { _vida = value; }
-        }
+        public static int VidaInicial { get; } = 100;
+        public string Nombre { get; set; }
+        public int Vida { get; set; }
 
-        private ArrayList Ataques = new ArrayList();
-        private ArrayList defensas = new ArrayList();
-        private ArrayList elementos = new ArrayList();
-        private ArrayList LibroDeHechizos = new ArrayList();
+        public static int Ataque { get; } = 10;
+        public static int Defensa { get; } = 5;
+        
+        private List <IElementoMagico> Elementos = new List<IElementoMagico>();
+        private List <IHechizo> LibroDeHechizos = new List <IHechizo>();
 
-        public void AgregarAtaque (Ataque ataque)
+        public void AgregarElemento (IElemento elemento)
         {
-            this.Ataques.Add(ataque);
-        }
-        public void QuitarAtaque (Ataque ataque)
-        {
-            this.Ataques.Remove(ataque);
-        }
-        public void AgregarDefensa (Defensa defensa)
-        {
-            this.defensas.Add(defensa);
-        }
-        public void QuitarDefensa (Defensa defensa)
-        {
-            this.defensas.Remove(defensa);
-        }
-        public void AgregarElemento (Elemento elemento)
-        {
-            this.elementos.Add(elemento);
-        }
+            this.Elementos.Add(elemento);
+        } 
         public void QuitarElemento (Elemento elemento)
         {
-            this.elementos.Remove(elemento);
+            this.Elementos.Remove(elemento);
         }
 
         public void AgregarHechizo (Hechizo hechizo)
@@ -77,7 +48,7 @@ namespace RolePlayGame_1.Library
         public int CalcularAtaqueTotal ()
         {
             int total = 0;
-            foreach (Elemento elemento in elementos)
+            foreach (IElemento elemento in elementos)
             {
                 total += elemento.Ataque;
             } 
@@ -87,7 +58,7 @@ namespace RolePlayGame_1.Library
         public int CalcularDefensaTotal ()
         {
             int total = 0;
-            foreach (Elemento elemento in elementos)
+            foreach (IElemento elemento in elementos)
             {
                 total += elemento.Defensa;
             } 
@@ -97,13 +68,25 @@ namespace RolePlayGame_1.Library
         public string GetTextToPrint()
         {
             string todosloselementos = "";
-            foreach (Elemento item in this.elementos)
+            foreach (IElemento item in this.elementos)
             {
                 todosloselementos += item.GetTextToPrint(); 
             }
 
             return ($"El Mago {this.Nombre} tiene {this.Vida} de vida y los siguientes elementos: {todosloselementos} ");
 
+        }
+
+        public void Curar()
+        {
+            this.Vida = VidaInicial;
+        }
+
+        public void RecibirAtaque (IPersonaje enemy)
+        {
+            int attack = enemy.CalcularAtaqueTotal - this.CalcularDefensaTotal;
+            int damage = attack > 0 ? attack : 0;
+            this.Vida -= damage;
         }
 
     }
