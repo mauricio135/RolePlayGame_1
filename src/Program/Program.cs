@@ -65,14 +65,12 @@ namespace RolePlayGame_1
 
            //Prueba instanciar magos
            Mago antioch = new Mago ("Antioch Peverell");
-           Elemento varitaSauco = new Elemento ("Varita de Sauco", 100, 15);
-           antioch.AgregarElemento(varitaSauco);
+           Varita sauco = new Varita ("Varita de Sauco");
+           antioch.AgregarElemento(sauco);
            
            Mago cadmus = new Mago ("Cadmus Peverell");
-           Elemento piedraResurreccion = new Elemento ("Piedra de la Resurrección", 10, 5);
-           cadmus.AgregarElemento(piedraResurreccion);
-
-           Console.WriteLine($"Ataque total de {antioch.Nombre}: {antioch.CalcularAtaqueTotal()}");
+           Sombrero seleccionador = new Sombrero ("Sombrero seleccionador");
+           cadmus.AgregarElemento(seleccionador);
         
         }
     }
