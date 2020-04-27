@@ -1,6 +1,6 @@
 namespace RolePlayGame_1.Library
 {
-{
+
     public class Hacha : IElemento
     {
         public string Nombre { get; }
@@ -20,5 +20,4 @@ namespace RolePlayGame_1.Library
         }
 
     }
-}
 }
