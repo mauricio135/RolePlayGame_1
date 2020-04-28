@@ -4,13 +4,13 @@ namespace RolePlayGame_1.Library
     public class Hacha : IElemento
     {
         public string Nombre { get;set; }
-        public int Ataque { get;set; }
-        public int Defensa { get;set; }
-        public Hacha(string nombre, int ataque, int defensa)
+        public int Ataque { get; } = 10;
+        public int Defensa { get; } = 1;
+
+        public Hacha(string nombre)
         {
             this.Nombre = nombre;
-            this.Ataque = ataque;
-            this.Defensa = defensa;
+         
         }
         public string GetTextToPrint()
         {

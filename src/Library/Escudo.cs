@@ -4,18 +4,18 @@ namespace RolePlayGame_1.Library
     public class Escudo : IElemento
     {
         public string Nombre { get;set; }
-        public int Ataque { get;set; }
-        public int Defensa { get;set; }
-        public Escudo(string nombre, int ataque, int defensa)
+        public int Ataque { get; } = 0;
+        public int Defensa { get; } = 10;
+
+        public Escudo(string nombre)
         {
             this.Nombre = nombre;
-            this.Ataque = ataque;
-            this.Defensa = defensa;
+         
         }
         public string GetTextToPrint()
         {
 
-            return $" '{this.Nombre}' ({this.Ataque}/{this.Defensa}) ";
+            return $" '{this.Nombre}' ({this.Ataque}/{this.Defensa})";
 
         }
 
