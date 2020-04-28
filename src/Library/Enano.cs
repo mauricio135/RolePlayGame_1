@@ -5,6 +5,11 @@ using System.Collections.Generic;
 
 namespace RolePlayGame_1.Library
 {
+
+/*
+Enano implementa IPersonaje que es el molde para todos los personajes. 
+Usamos polimorfismo ya que si bien la interfaz es el molde, cada personaje implementa en su clase los métodos de una forma particular. Acorde a las necesidades.
+*/
     public class Enano : IPersonaje
     {
         public Enano(string nombre)
@@ -34,8 +39,12 @@ namespace RolePlayGame_1.Library
         {
             return this.Vida > 0;
         }
+/*
+Modificamos la forma de calcular Defensa y Ataque acorde a los comentarios de la entrega anterior, quitamos las clases Ataque y Defensa.
+Se simplifica el código, ahora son atributos y se calcula ataque total  y defensa total. 
+Aplicamos Patrón Experto, ya que la clase es la responsable de calcular ataque y defensa total y posee todos los datos para hacerlo
+*/
 
-        //Este Metodo Calcula el valor total de Ataque en base a los valores de sus Elementos.
         public int CalcularAtaqueTotal()
         {
             int total = 0;
@@ -45,7 +54,7 @@ namespace RolePlayGame_1.Library
             }
             return total;
         }
-        //Este Metodo Calcula el valor total de Defensa  en base a los valores de sus Elementos.
+
         public int CalcularDefensaTotal()
         {
             int total = 0;
@@ -60,6 +69,9 @@ namespace RolePlayGame_1.Library
         {
             this.Vida = VidaInicial;
         }
+/* Agregamos el metodo RecibirAtaque para restar el daño, teniendo en cuenta la defensa y calcular la vida del personaje. Esto fue posible gracias a la interfaz IPersonaje.
+Usamos nuevamente polimorfismo.
+*/
        public void RecibirAtaque (IPersonaje enemy)
         {
             int attack = enemy.CalcularAtaqueTotal() - this.CalcularDefensaTotal();

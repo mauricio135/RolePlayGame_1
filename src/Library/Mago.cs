@@ -4,6 +4,11 @@ using System.Collections.Generic;
 
 namespace RolePlayGame_1.Library
 {
+
+/*
+Mago implementa IPersonaje que es el molde para todos los personajes. 
+Usamos polimorfismo ya que si bien la interfaz es el molde, cada personaje implementa en su clase los métodos de una forma particular. Acorde a las necesidades.
+*/
     public class Mago: IPersonaje
     {
         public int VidaInicial { get; } = 100;
@@ -55,8 +60,11 @@ namespace RolePlayGame_1.Library
             return total;
         }
 
-        //Aplicamos Expert para calcular la Defensa Total
-        //La clase mago tiene todos los datos para calcular
+/*
+Modificamos la forma de calcular Defensa y Ataque acorde a los comentarios de la entrega anterior, quitamos las clases Ataque y Defensa.
+Se simplifica el código, ahora son atributos y se calcula ataque total  y defensa total. 
+Aplicamos Patrón Experto, ya que la clase es la responsable de calcular ataque y defensa total y posee todos los datos para hacerlo
+*/
 
         public int CalcularDefensaTotal ()
         {
@@ -88,9 +96,9 @@ namespace RolePlayGame_1.Library
             this.Vida = VidaInicial;
         }
 
-        //El método recibirAtaque se localiza en la clase que recibe el ataque porque tiene 
-        //los valores necesarios para calcular el daño recibido y efectuar el cambio
-        //de vida (recibe el ataque por parámetro)
+/* Agregamos el metodo RecibirAtaque para restar el daño, teniendo en cuenta la defensa y calcular la vida del personaje. Esto fue posible gracias a la interfaz IPersonaje.
+Usamos nuevamente polimorfismo.
+*/
         public void RecibirAtaque (IPersonaje enemy)
         {
             int attack = enemy.CalcularAtaqueTotal() - this.CalcularDefensaTotal();

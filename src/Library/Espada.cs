@@ -5,6 +5,10 @@ using RolePlayGame_1.Library;
 
 namespace RolePlayGame_1.Library
 {
+
+/* Espada implementa la interfaz IElemento, ya que esta es el molde para todos los elementos. 
+Cada elemento se imprime en una operación polimórfica como cada elemento se deba imprimir.
+*/
     public class Espada : IElemento
         {
 
@@ -16,7 +20,10 @@ namespace RolePlayGame_1.Library
             
             public int Ataque {get;}=10;
             public int Defensa{get;}=0;
-           
+/*
+Aplicamos SRP, los Elementos tienen una única responsabilidad
+y la clase tiene una unica razon para cambiar. En este caso la forma de imprimirse
+*/ 
             public string GetTextToPrint()
         {
             return ($"La Espada {this.Nombre} tiene {this.Ataque}  ataque y {this.Defensa} de defensa ");

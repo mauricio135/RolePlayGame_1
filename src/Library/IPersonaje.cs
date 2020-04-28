@@ -4,7 +4,11 @@ using System.Collections.Generic;
 
 namespace RolePlayGame_1.Library
 {
-    //Interfase Ipersonaje será el molde de todos los personajes que tendran estos métodos y atributos.
+    /*
+    Interfaz Ipersonaje será el molde de todos los personajes que tendran estos métodos y atributos.
+    Aplicando luego polimorfismo en cada clase de cada personaje.
+    */
+    
     public interface IPersonaje
     {
         int CalcularAtaqueTotal();

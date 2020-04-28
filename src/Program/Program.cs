@@ -4,6 +4,10 @@ using RolePlayGame_1.Library;
 
 namespace RolePlayGame_1
 {
+
+/* Aplicamos en nuestro código, SRP, Expert y Polimorfismo.
+Realizamos todas las correcciones sugeridas por la cátedra
+*/
     public class Program
     {
         static void Main(string[] args)
