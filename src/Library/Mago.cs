@@ -55,20 +55,26 @@ namespace RolePlayGame_1.Library
             return total;
         }
 
+        //Aplicamos Expert para calcular la Defensa Total
+        //La clase mago tiene todos los datos para calcular
+
         public int CalcularDefensaTotal ()
         {
             int total = 0;
-            foreach (IElemento elemento in elementos)
+            foreach (IElemento elemento in Elementos)
             {
                 total += elemento.Defensa;
             } 
             return total;
         }
 
+        //Cada clase de IPersonaje tiene su método propio de GetTextToPrint
+        //Aplicamos polimorfismo
+
         public string GetTextToPrint()
         {
             string todosloselementos = "";
-            foreach (IElemento item in this.elementos)
+            foreach (IElemento item in this.Elementos)
             {
                 todosloselementos += item.GetTextToPrint(); 
             }
@@ -82,6 +88,9 @@ namespace RolePlayGame_1.Library
             this.Vida = VidaInicial;
         }
 
+        //El método recibirAtaque se localiza en la clase que recibe el ataque porque tiene 
+        //los valores necesarios para calcular el daño recibido y efectuar el cambio
+        //de vida (recibe el ataque por parámetro)
         public void RecibirAtaque (IPersonaje enemy)
         {
             int attack = enemy.CalcularAtaqueTotal - this.CalcularDefensaTotal;
