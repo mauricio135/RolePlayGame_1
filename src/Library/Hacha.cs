@@ -5,6 +5,7 @@ namespace RolePlayGame_1.Library
     {
 /* Hacha implementa la interfaz IElemento, ya que esta es el molde para todos los elementos. 
 Cada elemento se imprime en una operación polimórfica como cada elemento se deba imprimir.
+Se aplica la sugerencia de la calificacion anterior de Eduardo para setear valores a los distintos elementos.
 */
         public string Nombre { get;set; }
         public int Ataque { get; } = 10;

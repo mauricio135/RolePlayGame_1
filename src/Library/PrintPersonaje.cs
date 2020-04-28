@@ -1,6 +1,6 @@
 using System;
 using RolePlayGame_1.Library;
-//Se Agrega PrintPersonaje 
+//Se Agrega PrintPersonaje para Aplicar SRP y Polimorfismo.
 
 namespace RolePlayGame_1.Library
 {
