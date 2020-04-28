@@ -7,10 +7,6 @@ namespace RolePlayGame_1.Library
 {
     public class Enano : IPersonaje
     {
-        private ArrayList ataques = new ArrayList();
-        private ArrayList defensas = new ArrayList();
-        private ArrayList elementos = new ArrayList();
-
         public Enano(string nombre)
         {
             this.Nombre = nombre;
@@ -22,31 +18,15 @@ namespace RolePlayGame_1.Library
         public int Ataque { get; set; }
         public int Defensa { get; set; }
         public int VidaInicial { get; } = 100;
-        public List<IElemento> Elementos { get; set; }
+        public List<IElemento> Elementos { get; set; }= new List<IElemento>();
 
-        public void AgregarAtaque(Ataque ataque)
-        {
-            this.ataques.Add(ataque);
-        }
-        public void QuitarAtaque(Ataque ataque)
-        {
-            this.ataques.Remove(ataque);
-        }
-        public void AgregarDefensa(Defensa defensa)
-        {
-            this.defensas.Add(defensa);
-        }
-        public void QuitarDefensa(Defensa defensa)
-        {
-            this.defensas.Remove(defensa);
-        }
         public void AgregarElemento(IElemento elemento)
         {
-            this.elementos.Add(elemento);
+            this.Elementos.Add(elemento);
         }
         public void QuitarElemento(IElemento elemento)
         {
-            this.elementos.Remove(elemento);
+            this.Elementos.Remove(elemento);
         }
 
         //Este Metodo simplemente indica si el Enano esta vivo o no.
@@ -59,7 +39,7 @@ namespace RolePlayGame_1.Library
         public int CalcularAtaqueTotal()
         {
             int total = 0;
-            foreach (IElemento elemento in elementos)
+            foreach (IElemento elemento in Elementos)
             {
                 total += elemento.Ataque;
             }
@@ -69,7 +49,7 @@ namespace RolePlayGame_1.Library
         public int CalcularDefensaTotal()
         {
             int total = 0;
-            foreach (IElemento elemento in elementos)
+            foreach (IElemento elemento in Elementos)
             {
                 total += elemento.Defensa;
             }
@@ -90,19 +70,12 @@ namespace RolePlayGame_1.Library
         public string GetTextToPrint()
         {
             string todosloselementos = "";
-            string todoslosataques = "";
-            foreach (IElemento item in this.elementos)
+            foreach (IElemento item in this.Elementos)
             {
                 todosloselementos += item.GetTextToPrint();
             }
-            foreach (Ataque ataque in this.ataques)
-            {
 
-                todoslosataques += ataque.Nombre;
-
-            }
-
-            return ($"El Enano {this.Nombre} tiene {this.Vida} puntos de Vida y los siguientes elementos: {todosloselementos} y los siguientes Ataques = {todoslosataques}");
+            return ($"El Enano {this.Nombre} tiene {this.Vida} puntos de Vida y los siguientes elementos: {todosloselementos} ");
 
         }
 

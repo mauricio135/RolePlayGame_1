@@ -1,28 +1,27 @@
 using System;
-using System.Collections;
+using System.Collections.Generic;
 using RolePlayGame_1;
 using RolePlayGame_1.Library;
 
 
 namespace RolePlayGame_1
 {
-
     public class Dementor: IPersonaje
     {
-        public static int VidaInicial { get; } = 100;
+        public int VidaInicial { get; } = 100;
         public string Nombre { get; set; }
         public int Vida { get; set; }
 
-        public static int Ataque { get; } = 15;
-        public static int Defensa { get; } = 7;
+        public  int Ataque { get; } = 15;
+        public  int Defensa { get; } = 7;
         
-        private List <IElemento> Elementos = new List<IElemento>();
+        public List <IElemento> Elementos{get;set;} = new List<IElemento>();
        
         public void AgregarElemento (IElemento elemento)
         {
             this.Elementos.Add(elemento);
         } 
-        public void QuitarElemento (Elemento elemento)
+        public void QuitarElemento (IElemento elemento)
         {
             this.Elementos.Remove(elemento);
         }
@@ -36,13 +35,13 @@ namespace RolePlayGame_1
         public Dementor (string name)
         {
             this.Nombre = name;
-            this.Vida = Mago.VidaInicial;
+            this.Vida = this.VidaInicial;
         }
 
         public int CalcularAtaqueTotal ()
         {
             int total = 0;
-            foreach (IElemento elemento in elementos)
+            foreach (IElemento elemento in Elementos)
             {
                 total += elemento.Ataque;
             } 
@@ -52,7 +51,7 @@ namespace RolePlayGame_1
         public int CalcularDefensaTotal ()
         {
             int total = 0;
-            foreach (IElemento elemento in elementos)
+            foreach (IElemento elemento in Elementos)
             {
                 total += elemento.Defensa;
             } 
@@ -62,7 +61,7 @@ namespace RolePlayGame_1
         public string GetTextToPrint()
         {
             string todosloselementos = "";
-            foreach (IElemento item in this.elementos)
+            foreach (IElemento item in this.Elementos)
             {
                 todosloselementos += item.GetTextToPrint(); 
             }
@@ -78,7 +77,7 @@ namespace RolePlayGame_1
 
         public void RecibirAtaque (IPersonaje enemy)
         {
-            int attack = enemy.CalcularAtaqueTotal - this.CalcularDefensaTotal;
+            int attack = enemy.CalcularAtaqueTotal() - this.CalcularDefensaTotal();
             int damage = attack > 0 ? attack : 0;
             this.Vida -= damage;
         }

@@ -17,7 +17,7 @@ namespace RolePlayGame_1.Library
         public int Ataque { get; }
         public int Defensa { get; }
         public int VidaInicial { get; } = 100;
-        public List<IElemento> Elementos { get; set; }
+        public List<IElemento> Elementos { get; set; }= new List<IElemento>();
         
         public void AgregarElemento (IElemento elemento)
         {
@@ -31,6 +31,10 @@ namespace RolePlayGame_1.Library
         {
             return this.Vida >0 ;
         } 
+        public void Curar()
+        {
+            this.Vida=this.VidaInicial;
+        }
         public int CalcularAtaqueTotal ()
         {
             int total = 0;
@@ -54,7 +58,17 @@ namespace RolePlayGame_1.Library
             int attack = enemy.CalcularAtaqueTotal() - this.CalcularDefensaTotal();
             int damage = attack > 0 ? attack : 0;
             this.Vida -= damage;
-        }
+        }     
+            public string GetTextToPrint()
+        {
+            string todosloselementos = "";
+            foreach (IElemento item in this.Elementos)
+            {
+                todosloselementos += item.GetTextToPrint();
+            }
 
+            return ($"El Elfo {this.Nombre} tiene {this.Vida} de vida y los siguientes elementos: {todosloselementos} ");
+
+        }
     }
 }

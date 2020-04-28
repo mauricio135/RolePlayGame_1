@@ -1,4 +1,6 @@
 using System;
+using RolePlayGame_1.Library;
+
 
 namespace RolePlayGame_1
 {
@@ -7,7 +9,7 @@ namespace RolePlayGame_1
         string Nombre { get; set; }
         int Ataque { get; }
         int Defensa { get; }
-        string GetTextToPrint ();
+        string GetTextToPrint();
         
     }
     

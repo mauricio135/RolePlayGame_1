@@ -1,11 +1,12 @@
 using System;
+using RolePlayGame_1.Library;
 //Se Agrega PrintPersonaje 
 
-namespace RolePlayGame_1
+namespace RolePlayGame_1.Library
 {
-    public class PrintPersonaje : IPersonaje
+    public class PrintPersonaje 
     {
-        public void PrintPersonaje(IPersonaje personaje)
+        public void ConsolePrint(IPersonaje personaje)
         {
             Console.WriteLine(personaje.GetTextToPrint());
 

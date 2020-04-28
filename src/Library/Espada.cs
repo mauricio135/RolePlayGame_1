@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using RolePlayGame_1.Library;
 //se agrega Elemento Espada, con un Nombre y un ataque,este elemento da 0 de defensa y si su ataque es negativo se settea a 0
 
 namespace RolePlayGame_1.Library
@@ -14,7 +15,7 @@ namespace RolePlayGame_1.Library
             public string Nombre{get;set;}
             
             public int Ataque {get;}=10;
-            public int Defensa=0;
+            public int Defensa{get;}=0;
            
             public string GetTextToPrint()
         {
