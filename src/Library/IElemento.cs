@@ -7,8 +7,8 @@ namespace RolePlayGame_1.Library
     public interface IElemento
     {
         string Nombre { get;set;}
-        int Ataque { get;set;}
-        int Defensa { get;set;}
+        int Ataque { get;}
+        int Defensa { get;}
         string GetTextToPrint();
 
     }
