@@ -13,9 +13,10 @@ namespace RolePlayGame_1.Library
     {
         int CalcularAtaqueTotal();
         int CalcularDefensaTotal();
-        void Curar();
+        void Curar();        
+        bool TieneVida();
         void RecibirAtaque(IPersonaje personaje);
-        void AgregarElemento(IElemento elemento);
+        void AgregarElemento(IElemento elemento);        
         String GetTextToPrint();
 
         String Nombre {get; set;}

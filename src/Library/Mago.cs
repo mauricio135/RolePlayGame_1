@@ -38,7 +38,7 @@ Usamos polimorfismo ya que si bien la interfaz es el molde, cada personaje imple
         {
             this.LibroDeHechizos.Remove(hechizo);
         }
-        public bool Tienevida()
+        public bool TieneVida()
         {
             return this.Vida > 0;
         }

@@ -102,7 +102,7 @@ namespace Library.Test
             pequeño1.AgregarElemento(elemento9);
             pequeño1.AgregarElemento(elemento10);  
 
-            Enano pequeño2 = new Enano("Enano2");
+            IPersonaje pequeño2 = new Enano("Enano2");
             pequeño2.RecibirAtaque(pequeño1);
             
             //Se espera que pequeño2 no tenga vida luego de ser atacado varias veces por pequeño1 TieneVida deberia de retornar False.
