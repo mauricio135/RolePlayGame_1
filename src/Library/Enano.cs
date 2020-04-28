@@ -1,27 +1,28 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace RolePlayGame_1.Library
 {
-    public class Enano
+    public class Enano : IPersonaje
     {
-
-        private string nombre { get; set; }
-        private int vida { get; set; }
-        private static int vidainicial { get; set; } = 100;
         private ArrayList ataques = new ArrayList();
         private ArrayList defensas = new ArrayList();
         private ArrayList elementos = new ArrayList();
 
-        public Enano(string nombre, int vida)
+        public Enano(string nombre)
         {
             this.Nombre = nombre;
-            this.Vida = Enano.vidainicial;
+            this.Vida = VidaInicial;
 
         }
         public string Nombre { get; set; }
         public int Vida { get; set; }
+        public int Ataque { get; set; }
+        public int Defensa { get; set; }
+        public int VidaInicial { get; set; } = 100;
+        public List<IElemento> Elementos { get; set; }
 
         public void AgregarAtaque(Ataque ataque)
         {
@@ -39,58 +40,66 @@ namespace RolePlayGame_1.Library
         {
             this.defensas.Remove(defensa);
         }
-        public void AgregarElemento(Elemento elemento)
+        public void AgregarElemento(IElemento elemento)
         {
             this.elementos.Add(elemento);
         }
-        public void QuitarElemento(Elemento elemento)
+        public void QuitarElemento(IElemento elemento)
         {
             this.elementos.Remove(elemento);
         }
 
-         //Este Metodo simplemente indica si el Enano esta vivo o no.
+        //Este Metodo simplemente indica si el Enano esta vivo o no.
         public bool TieneVida()
         {
-            return this.vida > 0;
+            return this.Vida > 0;
         }
-        
-         //Este Metodo Calcula el valor total de Ataque en base a los valores de sus Elementos.
+
+        //Este Metodo Calcula el valor total de Ataque en base a los valores de sus Elementos.
         public int CalcularAtaqueTotal()
         {
             int total = 0;
-            foreach (Elemento elemento in elementos)
+            foreach (IElemento elemento in elementos)
             {
                 total += elemento.Ataque;
             }
             return total;
         }
-         //Este Metodo Calcula el valor total de Defensa  en base a los valores de sus Elementos.
+        //Este Metodo Calcula el valor total de Defensa  en base a los valores de sus Elementos.
         public int CalcularDefensaTotal()
         {
             int total = 0;
-            foreach (Elemento elemento in elementos)
+            foreach (IElemento elemento in elementos)
             {
                 total += elemento.Defensa;
             }
             return total;
         }
         //Este Metodo hace que este personaje vuelva a tener el valor inicial de Vida
-        public void CurarEnano()
+        public void Curar()
         {
-            this.Vida = Enano.vidainicial;
+            this.Vida = VidaInicial;
+        }
+        public void RecibirAtaque(IPersonaje personaje2)
+        {
+            this.Vida = this.Vida - personaje2.CalcularAtaqueTotal() - this.CalcularDefensaTotal();
+
         }
         //Metodo para extraer los valores del Objeto que deseo Imprimir con PrintEnano.cs
         public string GetTextToPrint()
         {
             string todosloselementos = "";
             string todoslosataques = "";
-            foreach (Elemento item in this.elementos)
+            foreach (IElemento item in this.elementos)
             {
-                todosloselementos += item.GetTextToPrint();               
+                todosloselementos += item.GetTextToPrint();
             }
-             foreach (Ataque ataque in this.ataques)
-            
-             todoslosataques += ataque.Nombre;
+            foreach (Ataque ataque in this.ataques)
+            {
+
+                todoslosataques += ataque.Nombre;
+
+            }
 
             return ($"El Enano {this.Nombre} tiene {this.Vida} puntos de Vida y los siguientes elementos: {todosloselementos} y los siguientes Ataques = {todoslosataques}");
 
