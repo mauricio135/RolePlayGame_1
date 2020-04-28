@@ -6,44 +6,49 @@ namespace Library.Test
 {
     public class TestsDementor
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
-        //Se Valida que el Enano se cree y Comience con vida en 100.
-        [Test]
-        public void IniciaVidaEnCien()
-        {
-            Dementor Hagrid = new Dementor("Dementor1", 200);
-            Assert.AreEqual(100, Hagrid.vida);
+        private Dementor h = new Dementor ("Ache");
+        private IElemento capita = new Capa ("Capa Invisibilidad");
+        private IElemento daga = new Daga ("Daga Mortal"); 
 
-        }
+
+        [Test]
         
-        //Test que Valida el Funcionamiento de"CurarDementor()", deberia de volver a su valor maximo de vida (100)"
+        public void AtaqueTotalCorrecto()
+
+        {
+            h.AgregarElemento(capita);
+            h.AgregarElemento(daga);
+            Assert.AreEqual(40, h.CalcularAtaqueTotal());
+        }
+
         [Test]
-        public void SiCuroEnanosVuelveLaVidaACien()
+        public void DefensaTotalCorrecto()
         {
-            Dementor hermaione = new Dementor("hermaione", 100);
-            hermaione.vida = 4;
-            hermaione.CurarDementor();
-            Assert.AreEqual(100, hermaione.vida);
-
-
-
+            h.AgregarElemento(capita);
+            h.AgregarElemento(daga);
+            Assert.AreEqual(16, h.CalcularDefensaTotal());
         }
 
-         [Test]
-        public void CalculaDefensaCorrecto()
+        [Test]
+        public void AgregaElementoCorrectamente()
         {
-            Dementor dumbuldore = new Dementor ("Dumbuldore", 100);
-            Elemento item1 = new Elemento ("hacha", 10, 0);
-            Elemento item2 = new Elemento ("espada", 2, 2);
-            Elemento item3 = new Elemento ("latigo", 0, 11);
-            dumbuldore.AgregarElemento(item1);
-            dumbuldore.AgregarElemento(item2);
-            dumbuldore.AgregarElemento(item3);
-
-            Assert.AreEqual(13, dumbuldore.CalcularDefensaTotal());
+            h.AgregarElemento(daga);
+            Dementor dum = new Dementor ("Dum");
+            Assert.IsNotNull(dum.Elementos);
+            
         }
+
+        [Test]
+        public void CuraCorrectamente()
+        {
+            h.AgregarElemento(capita);
+            h.AgregarElemento(daga);
+            Dementor didi = new Dementor ("Didi");
+            didi.RecibirAtaque(h);
+            didi.Curar();
+            Assert.AreEqual(100, didi.Vida);
+        }
+
+        
     }
 }

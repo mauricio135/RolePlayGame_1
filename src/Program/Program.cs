@@ -1,112 +1,92 @@
 ﻿using System;
 using System.Collections;
-using RolePlayGame_1.library;
 using RolePlayGame_1.Library;
 
 namespace RolePlayGame_1
 {
+
+    /* Aplicamos en nuestro código, SRP, Expert y Polimorfismo.
+    Realizamos todas las correcciones sugeridas por la cátedra
+    */
     public class Program
     {
-        private static ArrayList Elementos = new ArrayList();
         static void Main(string[] args)
         {
             //Creacion de Enanos
             //Creo a Enano Tommy y le asigno dos elementos diferentes
-            Enano enano1 = new Enano("Tommy", 100);
-
-            Elemento elemento1 = new Elemento("Capa", 10, 50);
+            IPersonaje enano1 = new Enano("Tommy");
+            IElemento elemento1 = new Hacha("Hacha Milagrosa");
             enano1.AgregarElemento(elemento1);
-            Elemento elemento2 = new Elemento("Espada", 2, 4);
-            enano1.AgregarElemento(elemento2);
 
             //Creo a Enano Lucas y le asigno dos elementos diferentes
-            Enano enano2 = new Enano("Lucas", 100);
-
-            Elemento elemento3 = new Elemento("Armadura", 1, 1);
+            IPersonaje enano2 = new Enano("Lucas");
+            IElemento elemento2 = new Hacha("Hacha Loca");
+            enano2.AgregarElemento(elemento2);
+            IElemento elemento3 = new Escudo("Escudo Largo");
             enano2.AgregarElemento(elemento3);
-            Elemento elemento4 = new Elemento("Posion Magica", 5, 6);
-            enano2.AgregarElemento(elemento4);
 
-            //Agrego Ataques a los Enanos previamente Creados
-            Ataque ataque1 = new Ataque("Patada Voladora", 2);
-            Ataque ataque2 = new Ataque("Salto Violento", 4);
-            enano1.AgregarAtaque(ataque1);
-            enano2.AgregarAtaque(ataque2);
+            PrintPersonaje print = new PrintPersonaje();
+            print.ConsolePrint(enano1);
+            print.ConsolePrint(enano2);
 
-            //Ataque entre Enanos -> Tommy Ataca a Lucas                            
-            enano1.Vida = enano1.Vida - enano2.CalcularAtaqueTotal() - enano1.CalcularDefensaTotal();
-            PrintEnano.ConsolePrintEnano(enano1);
+            //Ataque entre Enanos -> Tommy Ataca a Lucas  
+            enano1.RecibirAtaque(enano2);
+            print.ConsolePrint(enano1);
 
-            //Ataque entre Enanos -> Lucas Ataca a Tommy                            
-            enano2.Vida = enano2.Vida - enano1.CalcularAtaqueTotal() - enano2.CalcularDefensaTotal();
-            PrintEnano.ConsolePrintEnano(enano2);
+            //Ataque entre Enanos -> Lucas Ataca a Tommy   
+            enano2.RecibirAtaque(enano1);
+            print.ConsolePrint(enano2);
 
             //Curo Enanos: Tommy vuelve a tener 100 de vida
-            enano1.CurarEnano();
-            PrintEnano.ConsolePrintEnano(enano1);
+            enano1.Curar();
+            print.ConsolePrint(enano1);
 
-
-
-
-
-
-            Elfo Dooby = new Elfo("Dooby");
-            Elfo Belatrix = new Elfo("Belatrix");
-            Elemento dagaBelatrix = new Elemento("Daga Belatrix", 101, 0);
-            Elemento Calcetin = new Elemento("Calcetín", 0, 3);
-            Dooby.AgregarElemento(Calcetin);
-            Belatrix.AgregarElemento(dagaBelatrix);
+            //los Enanos se crean
+            Elfo dooby = new Elfo("Dooby");
+            Elfo belatrix = new Elfo("Belatrix");
+            IElemento dagaBelatrix = new Espada("Daga Belatrix");
+            IElemento calcetin = new Armadura("Calcetín");
+            dooby.AgregarElemento(calcetin);
+            belatrix.AgregarElemento(dagaBelatrix);
 
             //Belatrix ataca a dobby
-            Dooby.Vida = Dooby.Vida - Belatrix.CalcularAtaqueTotal();
-            Console.WriteLine(Dooby.Nombre + "\t" + "Vivo:  " + Dooby.TieneVida());
-
-
-            //Prueba instanciar magos
-            Mago antioch = new Mago("Antioch Peverell");
-            Elemento varitaSauco = new Elemento("Varita de Sauco", 100, 15);
-            antioch.AgregarElemento(varitaSauco);
-
-            Mago cadmus = new Mago("Cadmus Peverell");
-            Elemento piedraResurreccion = new Elemento("Piedra de la Resurrección", 10, 5);
-            cadmus.AgregarElemento(piedraResurreccion);
-
-            Console.WriteLine($"Ataque total de {antioch.Nombre}: {antioch.CalcularAtaqueTotal()}");
+            dooby.Vida = dooby.Vida - belatrix.CalcularAtaqueTotal();
+            Console.WriteLine(dooby.Nombre + "\t" + "Vivo:  " + dooby.TieneVida());
 
             //Creo Dementores
-            Dementor dementor1 = new Dementor("SeñorOscuro", 100);
+            Dementor dementor1 = new Dementor("SeñorOscuro");
 
-            Elemento elementoDementor1 = new Elemento("Bostezo Fatal", 10, 50);
-            Elementos.Add(elementoDementor1);
+            IElemento elementoDementor1 = new Daga("Bostezo Fatal");
             dementor1.AgregarElemento(elementoDementor1);
-            Elemento elementoDementor2 = new Elemento("Alas de murcielago", 2, 4);
+            IElemento elementoDementor2 = new Capa("Alas de murcielago");
             dementor1.AgregarElemento(elementoDementor2);
 
-            Dementor dementor2 = new Dementor("Ron", 100);
+            Dementor dementor2 = new Dementor("Ron");
 
-            Elemento elementoDementor3 = new Elemento("Traje invisible", 1, 1);
+            IElemento elementoDementor3 = new Capa("Traje invisible");
             dementor2.AgregarElemento(elementoDementor3);
-            Elemento elementoDementor4 = new Elemento("Gorro Asesino", 5, 6);
+            IElemento elementoDementor4 = new Daga("Gorro Asesino");
             dementor2.AgregarElemento(elementoDementor4);
-
-            //Agrego Ataques a los Dementores
-            Ataque ataqueDementor1 = new Ataque("Absorve energia", 2);
-            Ataque ataqueDementor2 = new Ataque("Bostezo venenoso", 4);
-
-            dementor1.AgregarAtaque(ataqueDementor1);
-            dementor2.AgregarAtaque(ataqueDementor2);
 
 
 
             //Ataque entre Dementores                            
-            dementor1.vida = dementor1.vida - dementor2.CalcularAtaqueTotal() - dementor1.CalcularDefensaTotal();
-            PrintDementor.ConsolePrintDementor(dementor1);
+            dementor1.RecibirAtaque(dementor2);
+            print.ConsolePrint(dementor1);
 
 
             //Curo Dementor
-            dementor1.CurarDementor();
-            PrintDementor.ConsolePrintDementor(dementor1);
+            dementor1.Curar();
+            print.ConsolePrint(dementor1);
 
+            //Prueba instanciar magos
+            Mago antioch = new Mago("Antioch Peverell");
+            Varita sauco = new Varita("Varita de Sauco");
+            antioch.AgregarElemento(sauco);
+
+            Mago cadmus = new Mago("Cadmus Peverell");
+            Sombrero seleccionador = new Sombrero("Sombrero seleccionador");
+            cadmus.AgregarElemento(seleccionador);
 
         }
     }
