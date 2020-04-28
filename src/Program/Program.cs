@@ -51,18 +51,6 @@ namespace RolePlayGame_1
             Dooby.Vida = Dooby.Vida - Belatrix.CalcularAtaqueTotal();
             Console.WriteLine(Dooby.Nombre + "\t" + "Vivo:  " + Dooby.TieneVida());
 
-
-            //Prueba instanciar magos
-            Mago antioch = new Mago("Antioch Peverell");
-            Elemento varitaSauco = new Elemento("Varita de Sauco", 100, 15);
-            antioch.AgregarElemento(varitaSauco);
-
-            Mago cadmus = new Mago("Cadmus Peverell");
-            Elemento piedraResurreccion = new Elemento("Piedra de la Resurrección", 10, 5);
-            cadmus.AgregarElemento(piedraResurreccion);
-
-            Console.WriteLine($"Ataque total de {antioch.Nombre}: {antioch.CalcularAtaqueTotal()}");
-
             //Creo Dementores
             Dementor dementor1 = new Dementor("SeñorOscuro", 100);
 
