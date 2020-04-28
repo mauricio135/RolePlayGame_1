@@ -97,7 +97,15 @@ namespace RolePlayGame_1
             dementor1.CurarDementor();
             PrintDementor.ConsolePrintDementor(dementor1);
 
-
+           //Prueba instanciar magos
+           Mago antioch = new Mago ("Antioch Peverell");
+           Varita sauco = new Varita ("Varita de Sauco");
+           antioch.AgregarElemento(sauco);
+           
+           Mago cadmus = new Mago ("Cadmus Peverell");
+           Sombrero seleccionador = new Sombrero ("Sombrero seleccionador");
+           cadmus.AgregarElemento(seleccionador);
+        
         }
     }
 }
